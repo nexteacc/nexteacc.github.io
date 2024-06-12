@@ -1,0 +1,31 @@
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.x'
+
+    - name: Install Hexo
+      run: |
+        npm install hexo-cli@4.3.1 -g 
+        npm install
+
+    - name: Deploy to GitHub Pages
+      env:
+        PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+      run: |
+        hexo clean
+        hexo generate
+        hexo deploy 
