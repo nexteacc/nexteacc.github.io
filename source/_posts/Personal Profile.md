@@ -8,4 +8,4 @@ tags:
 
 
 
-![resume](/Volumes/Sheng/nexteacc/source/images/resume.jpg)
+![resume](../images/resume.jpg)
